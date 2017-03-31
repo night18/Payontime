@@ -1,0 +1,82 @@
+{
+  "contract_name": "payontime",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "remitter",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "start",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "getRemitee",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "receiver",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "send",
+      "outputs": [],
+      "payable": true,
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "receiver",
+          "type": "address"
+        }
+      ],
+      "payable": true,
+      "type": "constructor"
+    }
+  ],
+  "unlinked_binary": "0x60606040526040516020806101ab83398101604052515b60008054600160a060020a03338116600160a060020a0319928316178355346002819055600180548684169416939093178084556003805460ff1916909417909355604051929091169281156108fc029290818181858888f19350505050151561007f57610000565b5b505b61011a806100916000396000f300606060405263ffffffff60e060020a600035041663a0fadd9781146040578063be9a6555146066578063c5d49bed146084578063d0679d341460aa575b6000565b34600057604a60c1565b60408051600160a060020a039092168252519081900360200190f35b34600057607060d0565b604080519115158252519081900360200190f35b34600057604a60d9565b60408051600160a060020a039092168252519081900360200190f35b60bf600160a060020a036004351660243560e9565b005b600054600160a060020a031681565b60035460ff1681565b600154600160a060020a03165b90565b5b50505600a165627a7a723058206626e736f8a856928f0f18ff4b7ea1fbae81b4cf20a00b13e49ae3983985505d0029",
+  "networks": {
+    "1999": {
+      "events": {},
+      "links": {},
+      "address": "0x1d431c2b96ec483c9b8dfee5e52c29ec68d8a7a4",
+      "updated_at": 1490982866826
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1490982866826
+}
