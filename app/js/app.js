@@ -7,17 +7,36 @@ var payontime = contract(payontime_artifacts);
 window.App = {
 	sendCoin : function(){
 
-	var sender = web3.eth.accounts[0];
-	var receiver = document.getElementById('receiver').value;
-	var amount = parseInt(document.getElementById('amount').value);
-	// console.log(web3.eth.getBalance(receiver));
-	console.log(sender);
-	console.log(receiver);
-	console.log(amount);
+		var sender = web3.eth.accounts[0];
+		var receiver = document.getElementById('receiver').value;
+		var amount = parseInt(document.getElementById('amount').value);
+		web3.eth.getBalance(receiver,function(error,result){
+			if(!error){
+				console.log("Before transfer: " + result );
+			}else{
+				console.log("Error: " + error);
+			}
+		});
+		// console.log(sender);
+		// console.log(receiver);
+		// console.log(amount);
 
-	payontime.new(receiver,{from:sender, value:amount});
-	// console.log(web3.eth.getBalance(receiver));
+		var newContract = payontime.new(receiver,{from:sender, value:amount}).then(
+			function(myPay){
+				console.log(myPay.getContractAddr.call());
+			}).then(
+			function(){
+				web3.eth.getBalance(receiver,function(error,result){
+					if(!error){
+						console.log("After transfer: " + result );
+					}else{
+						console.log("Error: " + error);
+					}
+				});
+			});
+		
 
+		
 	}
 }
 

@@ -27,6 +27,10 @@ contract payontime{
 		
 	}
 
+	function getContractAddr() public returns(address){
+		return this;
+	}
+
 	/*Get the remittee*/
 	function getRemitee() public returns(address){
 		return remittee;
