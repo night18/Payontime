@@ -2,6 +2,7 @@
 import { default as Web3} from 'web3';
 import { default as contract } from 'truffle-contract'
 import payontime_artifacts from '../../build/contracts/payontime.json'
+var dbserver = require('./database');
 var payontime = contract(payontime_artifacts);
 
 window.App = {
@@ -17,13 +18,12 @@ window.App = {
 				console.log("Error: " + error);
 			}
 		});
-		// console.log(sender);
-		// console.log(receiver);
-		// console.log(amount);
 
 		var newContract = payontime.new(receiver,{from:sender, value:amount}).then(
 			function(myPay){
-				console.log(myPay.getContractAddr.call());
+				let addr = myPay.getContractAddr.call();
+				dbserver.createTimeInfo(addr);
+				console.log(addr);
 			}).then(
 			function(){
 				web3.eth.getBalance(receiver,function(error,result){
@@ -34,12 +34,8 @@ window.App = {
 					}
 				});
 			});
-		
-
-		
 	}
 }
-
 
 window.addEventListener('load', function() {
   // Checking if Web3 has been injected by the browser (Mist/MetaMask)
@@ -54,5 +50,5 @@ window.addEventListener('load', function() {
   }
 
   payontime.setProvider(web3.currentProvider);
-
+  dbserver.connectdb();
 });
